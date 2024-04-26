@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <title></title>
+</head>
+<body>
+
+    <!-- Header -->
+    <div id="header">
+
+        <!-- Header Top -->
+        <div  class="header-top">
+            <div class="frames_logo">
+                <img class="logo_image" src="assets/img/logo.jpg" alt="logo">
+            </div>
+
+            <!-- Default -->
+            <div id="none" class="frames_header_right">
+                <div class="frames_container">
+                    <div class="left_container">
+                        <span class="user_font login_hover" onclick="showLogIn()">Đăng nhập</span>
+                        <span class="user_font"> / </span>
+                        <span class="user_font login_hover" onclick="showRegister()">Đăng ký</span>
+                    </div>
+                    <div class="right_container">
+                        <div class="cart user_font" onclick="showCart()">Giỏ hàng</div>
+                        <div class="cart user_font" onclick="openHistoryCart()">Lịch sử đơn hàng</div>
+                    </div>    
+                </div>
+            </div>
+
+            <!-- Client -->
+            <div id="client" class="frames_header_right">
+                <div class="frames_container">
+                    <div class="left_container">
+                        <span class="user_font login_hover" id="clientName">Đăng nhập</span>
+                        <span class="user_font"> / </span>
+                        <span class="user_font login_hover" onclick="logout()">Đăng xuất</span>
+                    </div>
+                    <div class="right_container">
+                        <div class="cart user_font" onclick="showCart()">Giỏ hàng</div>
+                        <div class="cart user_font" onclick="openHistoryCart()">Lịch sử đơn hàng</div>
+                    </div>    
+                </div>
+            </div>
+
+        </div> <!-- End Header Top -->
+
+        <!-- Header bot -->
+        <div class="header_bot">
+            <ul class="header_bot_nav">
+                <li>
+                    <a href="#slider1" class="header_nav_font">TRANG CHỦ</a>
+                </li>
+                <li class="header_nav_font" onclick="navPage('all')">Tất cả</li>
+                <li class="header_nav_font" onclick="navPage('coffee')">Coffee</li>
+                <li class="header_nav_font" onclick="navPage('soda')">Soda</li>
+
+                <!-- Header Search Box -->
+                <li class="header_search_box nav_class">
+                    <div class="header_search">
+                        <div class="into_search">
+                            <input oninput="search()" type="text" id="search_txt" placeholder="Bạn muốn tìm gì?">
+                            <i class="icon_search fas fa-search icon-search" onclick="advancedSearch()"></i>
+                        </div>
+                    </div>
+                    <ul class="advanced_search" id="advanceSearch">
+                        <li class="advanced_search_frames">
+                            <span>Khoảng giá:</span>
+                            <input id="fromPrice" type="text" class="from_type" placeholder="Từ">
+                            <span> ~ </span>
+                            <input  id="toPrice" type="text" class="from_type" placeholder="Đến">
+                        </li>
+                        <li class="advanced_search_frames">
+                            <span>Loại:</span>
+                            <select id="advanceType" class="select_classify">
+                                <option value="all">Tất cả</option>
+                                <option value="coffee">Coffee</option>
+                                <option value="soda">Soda</option>
+                            </select>
+                        </li>
+                    </ul>
+                </li> <!-- End Header Search Box -->
+            </ul>
+        </div> <!-- End Header Menu -->
+    </div> <!-- End Header -->
+
+    <!-- Slider 1 -->
+    <div id="slider1">
+        <img class="images-slider1" src="assets/img/slidequy1.jpg" alt="">
+    </div> <!-- End Slider 1 -->
+
+    <!-- Showlist -->
+    <div class="frames_content">
+        <div id="show_product">
+            <label for="list" class="format">Định dạng trang:</label>
+            <select name="" id="maxShow" onclick="changeMaxShow()">
+                <option value="4" selected>4 sản phẩm</option>
+                <option value="8">8 sản phẩm</option>
+                <option value="12">12 sản phẩm</option>
+            </select>
+        </div> <!-- End Showlist -->
+        <!-- Content -->
+        <div id="content">
+    
+            <!-- Content Items -->
+            <div class="content_container">
+                <h2 class="content_title">SẢN PHẨM</h2>
+                <div class="items_container" id="productList">
+                    <!-- One item
+                    <div class="frames_content_product">
+                        <img src="Assets/Image/Fanta.jpg" alt="" class="image_product">
+                        <div class="name_product">Fanta</div>
+                        <div class="price_product">20000VNĐ</div>
+                        <button class="order_product" onclick="openOrderModal('+i+')">Đặt hàng</button>
+                    </div> -->
+                </div>
+    
+                <!-- Pagination -->
+                <ul class="pagination" id="Pagination">
+                    <li class="pagination-item">
+                        <div class="pagination-item-link" onclick="pageDown();" >
+                            <i class="pagination-item-icon fas fa-chevron-left" ></i>
+                        </div> 
+                    </li>
+    
+                    <div id="pagination-index">
+                        <!-- <li class="pagination-item pagination-item--active">
+                            <div class="pagination-item-link">1</div> 
+                        </li>
+                        <li class="pagination-item">
+                            <div class="pagination-item-link">2</div> 
+                        </li>
+                        <li class="pagination-item">
+                            <div class="pagination-item-link">3</div> 
+                        </li> -->
+                    </div>
+    
+                    <li class="pagination-item">
+                        <div class="pagination-item-link" onclick="pageUp();" >
+                            <i class="pagination-item-icon fas fa-chevron-right"></i>
+                        </div> 
+                    </li>
+                </ul>
+                <!-- End Pagination-->
+    
+            </div> <!-- End Content  Items -->
+        </div> <!-- End Content -->
+    </div>
+
+    <!-- Slider 4 -->
+    <div id="slider4">
+        <img class="images-slider4" src="assets/img/slidequy2.jpg" alt="">
+    </div> <!-- End Slider 4 -->
+
+    <!-- Footer -->
+    <footer>
+        <div id="footer-container">
+            <img src="assets/img/logo.jpg" alt="" class="logo-image">
+            <br class="footer-content">
+                <div class="footer_word">
+                    <div class="frames_footer_word">
+                    <h1>Chào mừng đến quán nước của mình!</h1>
+                    <h2>Cám ơn bạn đã đến và ủng hộ mình</h2>
+                    </div>
+                    <div class="frames_footer_contact">
+                        <h1>mọi thông tin liên lạc</h1>
+                        <i class="fab fa-facebook" onclick="Search_information_facebook()"></i>
+                        <i class="fab fa-instagram" onclick="Search_information_instagram()" ></i>
+                    </div>   
+                </div> 
+            </div>               
+        </div>
+    </footer> <!-- End Footer -->
+
+    <!-- Modal Order -->
+    <div id="modal-order" class="modal_order">
+        <div class="modal_order_top">
+            <div class="modal_frames_icon" onclick="closeOrderModal()" >
+                <i class="modal_order_icon fas fa-times"></i>
+            </div>
+            <div class="modal_order_body">
+                <div class="modal_frames_img">
+                    <img id="buy-img"src="Assets/Image/CaPheDen.jpg" alt="Caphe" class="img_product">
+                    <div id="rootPrice" class="modal_order_img_price">25.000VNĐ</div>
+                </div>
+                <div class="modal_order_info">
+                    <div class="modal_order_product-info">
+                        <div id="order-name" class="modal_order_name">Cà phê</div>
+                        <div class="modal_order_frames_size">
+                            <div class="modal_order_font">Kích cỡ</div>
+                            <button id="size-1" class="modal_order_size" onclick="changeSize(1)">S</button>
+                            <button style="border-color: orange;" id="size-2" class="modal_order_size" onclick="changeSize(2)" >M</button>
+                            <button id="size-3" class="modal_order_size" onclick="changeSize(3)">L</button>
+                        </div>
+                        <div class="modal_quantity">
+                            <div class="modal_order_font">Số lượng</div>
+                            <span class="change-qty decrease" onclick="decQuantity()">-</span>
+                            <span id = "quantity" class="quantity ng-binding">1</span>
+                            <span class="change-qty increase"  onclick="incQuantity()">+</span>
+                        </div>
+                        <div class="modal-price">
+                            <div class="modal_order_font">Giá</div>
+                            <div id="curPrice" class="modal_item_price">25.000VNĐ</div>
+                        </div>
+                    </div>
+                    <div id="order-button" class="order-button">      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Modal Oder -->
+
+    <!-- Modal Shopping Cart -->
+    <div class="modal_cart" id="modal-shopping-cart">
+        <div id="shopping-cart" class="shopping_cart">
+            <div class="frames_shopping_cart">
+                <div class="frames_modal_shopping_close">
+                    <i class="modal_shopping_close_icon fas fa-times" onclick="closeCart()"></i>
+                </div>
+                <div class="word_modal_shopping_cart">GIỎ HÀNG</div>
+
+                <div class="modal_cart_title_product">
+                    <div class="modal_cart_font">Sản phẩm</div>
+                    <div class="modal_cart_font">Tên</div>
+                    <div class="modal_cart_font">Giá</div>
+                    <div class="modal_cart_font">Số lượng</div>
+                    <div class="modal_cart_font">Tổng tiền</div>
+                </div>
+
+                <div id="cartList" class="modal_cart_info_product">
+                    <!-- One item -->
+                    <div class="frames_modal_cart_info_product">
+                        <div class="frames_img_product">
+                            <img class="modal_cart_img_product" src="Assets/Image/CaPheDua.jpg" alt="">
+                        </div>
+                        <div class="frames_modal_cart_info_product_word">
+
+                            <div class="frames_info_product_modal_cart">
+                                <div class="product_title">Cà phê</div>
+                                <ul class="frames_product_note">
+                                    <li class="modal_cart_font_note">Size S</li>
+                                    <li class="modal_cart_font_note">Không đá</li>
+                                </ul>
+                            </div>
+
+                            <div class="modal_cart_product_price">25000VNĐ</div>
+
+                            <div class="modal_cart_product_quantily">
+                                <span class="modal_cart_subtract modal_cart_sign_hover" ng-click="decrease(product)">-</span>
+                                <span class="modal_cart_number">1</span>
+                                <span class="modal_cart_add modal_cart_sign_hover" ng-click="increase(product)">+</span>
+                            </div>
+
+                            <div class="modal_cart_total_product">
+                                <div class="modal_cart_total_price">25000VNĐ</div>  
+                            </div>
+                            <div class="frames_product_modal_cart_icon">
+                                <i class="icon_modal_cart fas fa-times"></i>
+                            </div>
+                        </div>
+                    </div> <!-- End One item -->
+                    
+                    
+                </div>
+                <div class="total_money">
+                    <div class="index"></div>
+                    <div class="total_money_bill">
+                        <div class="total_bill">Tổng tiền:</div>
+                        <div id="total-price" class="total_price">25000VNĐ</div>
+                    </div>
+                </div>  
+
+                <div class="address">
+                    <div class="sub-address font">Địa chỉ:</div>
+                    <input id="addressCart" class="typeahead" type="text" autocomplete="off">
+                </div>
+
+                <div class="pay_button">
+                    <button class="pay_bill button" onclick="successOrder()">Đặt Hàng</button>
+                    <button class="delete-bill button" onclick="deleteAllCart()">Xoá Giỏ Hàng</button>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Modal Shopping Cart -->
+    
+    <!-- Modal History Shopping Cart -->
+    <div id="modal-history">
+        <div class="frames_modal_cart_history">
+            <div class="modal_cart_history_close" onclick="closeHistoryCart()">
+                <i class="modal_cart_history_close_icon fas fa-times "></i>
+            </div>
+            <div class="modal_cart_history_title">LỊCH SỬ ĐƠN HÀNG</div>
+            <div class="frames_modal_cart_history_table">
+                <table class="modal_cart_history_table">
+                    <thead>
+                        <tr>
+                            <th>Mã đơn hàng</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Size</th>
+                            <th>Số lượng</th>
+                            <th>Tổng tiền</th>
+                            <th>Ngày đặt</th>
+                            <th>Tên khách Hàng</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyBody">
+                        <!-- <tr>
+                            <td rowspan="1">1</td>
+                            <td>CÀ PHÊ SỮA ĐÁ</td>
+                            <td>L</td>
+                            <td>1000</td>
+                            <td>10000000 VND</td>
+                            <td>15/12/2021</td>
+                            <td>Trần Đoàn Quy</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> <!-- End Modal History Shopping Cart -->
+    
+    <!-- Modal Login -->
+    <div id="modal_login">
+        <div class="modal_login_header">
+            <div class="modal_login_header_close" onclick="closeLogIn()">
+                <i class="modal-login-close-icon fas fa-times"></i>
+            </div>
+            <div class="word_login">ĐĂNG NHẬP</div>
+            <input type="text" id="log1" class="modal_input" placeholder="Tài khoản">
+            <input type="password" id="log2" class="modal_input" placeholder="Mật khẩu">
+            <button class="modal_button_login" onclick="login()">Đăng nhập</button>
+        </div>
+    </div> <!-- Modal Login -->
+
+    <!-- Modal Register -->
+        <div id="modal_register">
+            <div class="modal_register_top">
+                <div class="modal_register_top_close" onclick="closeRegister()">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div class="word_register">ĐĂNG KÝ</div>
+                <input type="text" id="reg1" class="modal_register_input" placeholder="Họ và tên">
+                <input type="text" id="reg2" class="modal_register_input" placeholder="Email">
+                <input type="text" id="reg3" class="modal_register_input" placeholder="Số điện thoại">
+                <input type="text" id="reg4" class="modal_register_input" placeholder="Tài khoản">
+                <input type="password" id="reg5" class="modal_register_input" placeholder="Mật khẩu">
+                <input type="password" id="reg6" class="modal_register_input" placeholder="Nhập lại mật khẩu">
+                <button class="modal_button_register" onclick="register()">Đăng ký</button>
+            </div>
+        </div> <!-- Modal register -->
+</body>
+</html>
